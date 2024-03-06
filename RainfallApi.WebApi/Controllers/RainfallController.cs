@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RainfallApi.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller for retrieving rainfall readings.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class RainfallController : ControllerBase
@@ -36,8 +39,8 @@ namespace RainfallApi.WebApi.Controllers
         [ProducesResponseType(typeof(ErrorResponse), 404)]
         [ProducesResponseType(typeof(ErrorResponse), 500)]
         public async Task<IActionResult> GetRainfallReadings(
-            [FromQuery][Required] string stationId,
-            [FromQuery] int count = 10)
+            [FromQuery][Required(ErrorMessage = "StationId is required")] string stationId,
+            [FromQuery][Range(1, 100, ErrorMessage = "Count must be between 1 and 100")] int count = 10)
         {
             try
             {
