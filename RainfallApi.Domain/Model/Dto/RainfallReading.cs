@@ -8,7 +8,7 @@ namespace RainfallApi.Domain.Model.Dto
 {
     public class RainfallReading
     {
-        public string? DateMeasured { get; set; }
+        public DateTime? DateMeasured { get; set; }
         public decimal? AmountMeasured { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using RainfallApi.Application.Interface;
+﻿using AutoMapper;
+using RainfallApi.Application.Interface;
+using RainfallApi.DataAccess.Interface;
 using RainfallApi.Domain.Model.Dto;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,18 @@ namespace RainfallApi.Application.Service
 {
     public class RainfallReadingService : IRainfallReadingService
     {
+        private readonly IRainfallReadingRepository _externalRepository;
+        private readonly IMapper _mapper;
 
-        Task<List<RainfallReading>> IRainfallReadingService.GetRainfallReadings(string stationId, int count)
+        public RainfallReadingService(IRainfallReadingRepository externalRepository, IMapper mapper)
         {
+            _externalRepository = externalRepository;
+            _mapper = mapper;
+        }
+        public async Task<List<RainfallReading>> GetRainfallReadings(string stationId, int count)
+        {
+            var data = await _externalRepository.GetReadingByStation(stationId, count);
+
             throw new NotImplementedException();
         }
     }

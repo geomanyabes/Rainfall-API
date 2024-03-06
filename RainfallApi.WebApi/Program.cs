@@ -1,3 +1,6 @@
+using AutoMapper;
+using RainfallApi.Application.Configuration;
+using RainfallApi.DataAccess.Interface;
 using RainfallApi.WebApi.Configuration;
 using System.Reflection;
 
@@ -13,7 +16,15 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 });
+builder.Services.AddHttpClient<IRainfallReadingRepository>();
 
+// Configure AutoMapper and register mapping profile
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile<MappingProfile>();
+});
+var mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 //DI
 builder.Services.RegisterRepositories();
