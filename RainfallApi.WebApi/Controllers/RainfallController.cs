@@ -48,9 +48,19 @@ namespace RainfallApi.WebApi.Controllers
 
                 return Ok(new RainfallReadingResponse(readings));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, new ErrorResponse
+                {
+                    Message = "Internal server error",
+                    Details = new()
+                    {
+                        new() {
+                            PropertyName = ex.Source,
+                            Message = ex.ToString()
+                        }
+                    }
+                });
             }
         }
     }
