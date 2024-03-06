@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Automapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RainfallApi.DataAccess\RainfallApi.DataAccess.csproj" />
+    <ProjectReference Include="..\RainfallApi.Domain\RainfallApi.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
