@@ -8,6 +8,12 @@ using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel((context, serverOptions) =>
+{
+    var kestrelSection = context.Configuration.GetSection("Kestrel");
+
+    serverOptions.Configure(kestrelSection);
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -39,6 +45,7 @@ Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 builder.Services.AddSerilog();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
