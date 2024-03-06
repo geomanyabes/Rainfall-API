@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RainfallApi.Domain.Model.Entity
+namespace RainfallApi.Domain.Model.Dto
 {
     public class RainfallReading
     {

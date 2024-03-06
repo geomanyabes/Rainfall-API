@@ -9,5 +9,9 @@ namespace RainfallApi.Application.Service
 {
     public class RainfallReadingService : IRainfallReadingService
     {
+        public Task GetRainfallReadings(string stationId, int count)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

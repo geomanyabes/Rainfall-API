@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RainfallApi.Domain.Model.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace RainfallApi.Application.Interface
 {
     public interface IRainfallReadingService
     {
+        Task<List<RainfallReading>> GetRainfallReadings(string stationId, int count);
     }
 }
