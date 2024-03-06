@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RainfallApi.Application.Interface;
 using RainfallApi.Domain.Model.Dto;
-using RainfallApi.Domain.Model.Entity;
 using System.ComponentModel.DataAnnotations;
 
 namespace RainfallApi.WebApi.Controllers
