@@ -8,13 +8,13 @@ namespace RainfallApi.Domain.Model.Dto
 {
     public class RainfallReadingResponse
     {
-        private List<RainfallReading> readings = new();
+        private List<RainfallReading>? readings = new();
 
         public RainfallReadingResponse() { }
-        public RainfallReadingResponse(List<RainfallReading> readings)
+        public RainfallReadingResponse(List<RainfallReading>? readings)
         {
             this.Readings = readings;
         }
-        public List<RainfallReading> Readings { get => readings; set => readings = value; }
+        public List<RainfallReading>? Readings { get => readings; set => readings = value; }
     }
 }

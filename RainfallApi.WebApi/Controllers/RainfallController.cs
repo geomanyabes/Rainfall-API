@@ -44,7 +44,42 @@ namespace RainfallApi.WebApi.Controllers
         {
             try
             {
+
+                //We can implement our own validation and throw proper response, but why not just use the DataAnnotations `Required` and `Range`?
+                //List<ErrorDetail> errors = new();
+                //if(string.IsNullOrEmpty(stationId))
+                //{
+                //    errors.Add(new()
+                //    {
+                //        PropertyName = nameof(stationId),
+                //        Message = "StationId is required"
+                //    });
+                //}
+                //if(count < 1 || count > 100)
+                //{
+                //    errors.Add(new()
+                //    {
+                //        PropertyName = nameof(count),
+                //        Message = "Count must be between 1 and 100"
+                //    });
+                //}
+                //if (errors.Any()) 
+                //{
+                //    return BadRequest(new ErrorResponse()
+                //    {
+                //        Message = "Invalid request",
+                //        Details = errors
+                //    });
+                //}
+
                 var readings = await _rainfallService.GetRainfallReadings(stationId, count);
+                if(readings?.Any() == false)
+                {
+                    return NotFound(new ErrorResponse()
+                    {
+                        Message = "No readings found for the specified stationId"
+                    });
+                }
 
                 return Ok(new RainfallReadingResponse(readings));
             }
