@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Moq;
-using NUnit.Framework;
+﻿using Moq;
 using RainfallApi.Application.Interface;
 using RainfallApi.Application.Service;
 using RainfallApi.DataAccess.Interface;
-using RainfallApi.Domain.Model.Dto;
 using RainfallApi.Domain.Model.Entity;
 
-namespace RainfallApi.Tests
+namespace RainfallApi.Tests.Tests.Repository
 {
     [TestFixture]
     public class RainfallReadingServiceTests

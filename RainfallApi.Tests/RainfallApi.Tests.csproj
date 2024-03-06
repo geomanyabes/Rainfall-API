@@ -20,14 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tests\Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RainfallApi.Application\RainfallApi.Application.csproj" />
     <ProjectReference Include="..\RainfallApi.DataAccess\RainfallApi.DataAccess.csproj" />
     <ProjectReference Include="..\RainfallApi.Domain\RainfallApi.Domain.csproj" />
     <ProjectReference Include="..\RainfallApi.WebApi\RainfallApi.WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tests\Service\" />
   </ItemGroup>
 
 </Project>
