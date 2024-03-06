@@ -9,6 +9,6 @@ namespace RainfallApi.Application.Interface
 {
     public interface IRainfallReadingService
     {
-        Task<List<RainfallReading>> GetRainfallReadings(string stationId, int count);
+        Task<List<RainfallReading>?> GetRainfallReadings(string stationId, int count);
     }
 }

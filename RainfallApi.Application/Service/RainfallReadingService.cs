@@ -13,18 +13,28 @@ namespace RainfallApi.Application.Service
     public class RainfallReadingService : IRainfallReadingService
     {
         private readonly IRainfallReadingRepository _externalRepository;
-        private readonly IMapper _mapper;
 
-        public RainfallReadingService(IRainfallReadingRepository externalRepository, IMapper mapper)
+        public RainfallReadingService(IRainfallReadingRepository externalRepository)
         {
             _externalRepository = externalRepository;
-            _mapper = mapper;
         }
-        public async Task<List<RainfallReading>> GetRainfallReadings(string stationId, int count)
+        public async Task<List<RainfallReading>?> GetRainfallReadings(string stationId, int count)
         {
             var data = await _externalRepository.GetReadingByStation(stationId, count);
+            var result = new List<RainfallReading>();
+            if(data?.Any() == true)
+            {
+                foreach (var d in data)
+                {
+                    result.Add(new()
+                    {
+                        DateMeasured = d?.LatestReading?.DateTime,
+                        AmountMeasured = d?.LatestReading?.Value
+                    });
+                }
+            }
 
-            throw new NotImplementedException();
+            return result;
         }
     }
 }
