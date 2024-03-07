@@ -22,7 +22,7 @@ namespace RainfallApi.Application.Service
         {
             var data = await _externalRepository.GetReadingByStation(stationId, count);
             var result = new List<RainfallReading>();
-            if(data?.Any() == true)
+            if (data?.Any() == true)
             {
                 foreach (var d in data)
                 {

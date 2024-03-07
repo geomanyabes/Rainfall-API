@@ -66,7 +66,6 @@ namespace RainfallApi.Tests.Tests.Repository
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
@@ -83,7 +82,6 @@ namespace RainfallApi.Tests.Tests.Repository
             var result = await _rainfallReadingService.GetRainfallReadings(stationId, count);
 
             // Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.Not.Null);
         }
 
@@ -107,7 +105,13 @@ namespace RainfallApi.Tests.Tests.Repository
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.Not.Null);
+
+            var first = result.First();
+            Assert.Multiple(() =>
+            {
+                Assert.That(first.DateMeasured, Is.Null);
+                Assert.That(first.AmountMeasured, Is.Null);
+            });
         }
     }
 
